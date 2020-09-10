@@ -15,16 +15,28 @@ import java.util.Random;
 public class App {
     public void run (){
         System.out.println("Привет.");
-        System.out.println("Программа задумала число, угадай:");
+        System.out.println("Программа задумала число от 0 до 5, угадай:");
         Random random = new Random();
-        int myNumber = random.nextInt(5 - 0 + 1)+ 0;
-        Scanner scanner = new Scanner(System.in);
-        int gamerNumber = scanner.nextInt();
-        if(myNumber == gamerNumber){
-            System.out.println("Ты выиграл!");
-        }else{
-            System.out.println("Ты проиграл! Было задумано: " + myNumber);
+        int attempt = 0;
+        do {
             
-        }
+        
+            int myNumber = random.nextInt(5 - 0 + 1)+ 0;
+            Scanner scanner = new Scanner(System.in);
+            int gamerNumber = scanner.nextInt();
+            if(myNumber == gamerNumber){
+                System.out.println("Ты выиграл!");
+                break;
+            }else{
+                if (attempt > 1){
+                System.out.println("Ты проиграл! Было задумано: " + myNumber);
+                    break;
+                }else{
+                    System.out.println("Попробуй еще раз: ");
+                }
+                attempt++;
+
+            }
+        } while (true);
     }
 }
